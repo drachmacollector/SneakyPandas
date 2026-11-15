@@ -1,0 +1,37 @@
+/* ============================================================================
+   FONT LAYER — the ONLY file to touch when swapping a typeface.
+   ----------------------------------------------------------------------------
+   To swap a face for a downloaded font (e.g. something from ifonts.xyz):
+     1. Check its license allows web embedding, then drop the .woff2 into
+        /public/fonts/  (e.g. public/fonts/ShinjuDisplay.woff2)
+     2. Add an @font-face block below, e.g.:
+          @font-face {
+            font-family: "Shinju Display";
+            src: url("/fonts/ShinjuDisplay.woff2") format("woff2");
+            font-weight: 700;
+            font-display: swap;
+          }
+     3. Change ONE stack variable at the bottom, e.g.:
+          --font-stack-display: "Shinju Display", "Zen Old Mincho", serif;
+   Nothing else in the codebase references font files or family names.
+   ============================================================================ */
+
+@import "@fontsource/zen-old-mincho/700.css";
+@import "@fontsource/zen-old-mincho/900.css";
+@import "@fontsource/yuji-syuku/400.css";
+@import "@fontsource/zen-kaku-gothic-new/400.css";
+@import "@fontsource/zen-kaku-gothic-new/500.css";
+@import "@fontsource/zen-kaku-gothic-new/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+:root {
+  /* Display: chapter titles, H1 */
+  --font-stack-display: "Zen Old Mincho", "Iowan Old Style", Georgia, serif;
+  /* Brush: decorative kanji + wordmark flourish ONLY — never body text */
+  --font-stack-brush: "Yuji Syuku", "Zen Old Mincho", serif;
+  /* Body + UI */
+  --font-stack-body: "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+  /* Mono: ASCII art, tags, meta */
+  --font-stack-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+}
