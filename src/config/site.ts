@@ -45,7 +45,7 @@ export const founders: Founder[] = [
     photos: {
       primary: "/developers/DSC05339.JPG",
       hover: "/developers/DSC05158.JPG",
-      position: "62% 30%",
+      position: "78% 28%",
       hoverPosition: "55% 25%",
     },
   },

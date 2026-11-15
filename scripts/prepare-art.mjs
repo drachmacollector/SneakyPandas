@@ -29,8 +29,8 @@ const jobs = [
   { src: `${SRC}/Asthetic 9_16 Wallpaper ✨.jpg`, out: "way-path", crop: { top: 0, bottom: 0, left: 0, right: 0 }, maxW: 1100 },
   // masters: the two pandas under the pine (crop the AI tag, keep the calligraphy)
   { src: `${SRC}/988188343257791174.jpg`, out: "masters-duo", crop: { top: 0.055, bottom: 0, left: 0, right: 0 }, maxW: 1200 },
-  // pact: red pagoda & plum woodblock
-  { src: `${SRC}/907616131203606812.jpg`, out: "pact-pagoda", crop: { top: 0.015, bottom: 0.015, left: 0.015, right: 0.015 }, maxW: 1000 },
+  // pact: red pagoda & plum woodblock (right crop removes the AI pseudo-calligraphy column)
+  { src: `${SRC}/907616131203606812.jpg`, out: "pact-pagoda", crop: { top: 0.015, bottom: 0.015, left: 0.015, right: 0.3 }, maxW: 1000 },
 ];
 
 for (const j of jobs) {
