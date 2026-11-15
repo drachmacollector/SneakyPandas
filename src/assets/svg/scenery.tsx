@@ -11,17 +11,18 @@ const ink = "var(--color-ink)";
 export function Mountains({ className }: P) {
   return (
     <svg viewBox="0 0 900 360" fill="none" preserveAspectRatio="xMidYMax slice" aria-hidden="true" className={className}>
-      <g data-depth="far" opacity="0.1">
-        <path d="M0 360 L90 220 C110 190 140 190 160 222 L300 360 Z" fill={ink} />
-        <path d="M340 360 L480 150 C500 120 530 122 548 154 L700 360 Z" fill={ink} />
+      <g data-depth="far" opacity="0.08">
+        <path d="M-40 360 L120 240 C145 221 175 221 198 244 L340 360 Z" fill={ink} />
+        <path d="M330 360 L470 190 C492 164 524 165 544 192 L690 360 Z" fill={ink} />
+        <path d="M660 360 L780 260 C800 244 826 245 844 264 L940 360 Z" fill={ink} />
       </g>
-      <g data-depth="mid" opacity="0.2">
-        <path d="M120 360 L300 140 C320 115 352 116 372 146 L560 360 Z" fill={ink} />
-        <path d="M580 360 L720 200 C740 176 768 178 786 206 L900 360 Z" fill={ink} />
+      <g data-depth="mid" opacity="0.16" filter="url(#ink-bleed-soft)">
+        <path d="M60 360 L260 170 C284 148 318 149 340 174 L540 360 Z" fill={ink} />
+        <path d="M560 360 L700 230 C720 212 748 213 766 234 L890 360 Z" fill={ink} />
       </g>
-      <g data-depth="near" opacity="0.38">
-        <path d="M420 360 L630 100 C652 72 688 74 708 106 L900 340 L900 360 Z" fill={ink} />
-        <path d="M0 360 L60 300 C76 282 100 284 114 304 L170 360 Z" fill={ink} />
+      <g data-depth="near" opacity="0.3" filter="url(#ink-bleed-soft)">
+        <path d="M380 360 L600 140 C624 116 660 117 682 144 L900 350 L900 360 Z" fill={ink} />
+        <path d="M-30 360 L70 285 C88 272 112 273 128 290 L210 360 Z" fill={ink} />
       </g>
     </svg>
   );
@@ -37,14 +38,10 @@ export function Kasumi({ className, flip = false }: P & { flip?: boolean }) {
       className={className}
       style={flip ? { transform: "scaleX(-1)" } : undefined}
     >
-      <g fill="var(--color-washi)">
+      <g fill="var(--color-washi)" stroke={ink} strokeOpacity="0.14" strokeWidth="1.5">
         <rect x="0" y="28" width="420" height="34" rx="17" />
         <rect x="120" y="4" width="330" height="34" rx="17" />
         <rect x="230" y="52" width="410" height="34" rx="17" />
-      </g>
-      <g fill={ink} opacity="0.07">
-        <rect x="0" y="28" width="420" height="34" rx="17" />
-        <rect x="120" y="4" width="330" height="34" rx="17" />
       </g>
     </svg>
   );

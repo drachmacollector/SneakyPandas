@@ -17,7 +17,7 @@ export const copy = {
   hero: {
     kanji: "序",
     chapter: "Prologue",
-    h1: ["Quietly, we build", "loud websites."],
+    h1: ["Quietly,", "we build", "loud websites."],
     sub: "SneakyPandas is Nakul and Siddhi — two developers who treat every website like a story worth unrolling. You've just opened ours.",
     ctaPrimary: "Seal a project",
     ctaGhost: "Unroll the story",
