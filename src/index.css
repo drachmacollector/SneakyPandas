@@ -229,12 +229,41 @@
     opacity: 0.18;
   }
 
+  /* painting plates (see src/components/art/ArtPlate.tsx) */
+  .art-blend {
+    mix-blend-mode: multiply;
+    filter: contrast(1.03) saturate(0.95);
+  }
+  .art-vignette {
+    mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, black 52%, transparent 92%);
+    -webkit-mask-image: radial-gradient(ellipse 88% 88% at 50% 50%, black 52%, transparent 92%);
+  }
+  .art-framed {
+    background: var(--color-washi);
+    padding: 10px;
+    border: 1px solid rgb(28 25 21 / 0.18);
+    border-radius: var(--radius-paper);
+    box-shadow: var(--shadow-ink);
+  }
+  .art-framed img {
+    border-radius: 1px;
+  }
+
   /* tategaki vertical accents (decorative, hidden on mobile) */
   .tategaki {
     writing-mode: vertical-rl;
     font-family: var(--font-stack-brush);
     letter-spacing: 0.5em;
     user-select: none;
+  }
+}
+
+@keyframes tech-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 

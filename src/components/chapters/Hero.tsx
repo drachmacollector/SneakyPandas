@@ -1,11 +1,15 @@
 import { useEffect, useRef } from "react";
 import { gsap, useGSAP, D, E, MOTION_OK } from "../motion/gsap";
 import { copy } from "../../data/copy";
-import { Mountains, Kasumi } from "../../assets/svg/scenery";
-import { PandaPeek } from "../../assets/svg/panda";
 import { HankoSeal } from "../../assets/svg/seals";
+import { ArtPlate } from "../art/ArtPlate";
+import { PetalField } from "../art/PetalField";
 
-/** 序 Prologue — the scroll unrolls. */
+/**
+ * 序 Prologue — the scroll unrolls onto a sumi-e painting.
+ * The panda painting sits INSIDE the headline stack (lines 1–2 behind it,
+ * line 3 in front), with vermilion petals and gold flecks drifting over it.
+ */
 export function Hero({ start }: { start: boolean }) {
   const root = useRef<HTMLElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
@@ -17,14 +21,13 @@ export function Hero({ start }: { start: boolean }) {
       mm.add(MOTION_OK, () => {
         const band = () => window.innerHeight * 0.46;
 
-        // initial states live here only — reduced motion sees everything.
         gsap.set("[data-sheet]", { clipPath: "inset(46% 0% 46% 0%)" });
         gsap.set("[data-roller='top']", { y: band });
         gsap.set("[data-roller='bottom']", { y: () => -band() });
-        gsap.set("[data-hero-line]", { yPercent: 110 });
+        gsap.set("[data-hero-line]", { yPercent: 112 });
         gsap.set("[data-hero-fade]", { opacity: 0, y: 16 });
         gsap.set("[data-hanko]", { opacity: 0, scale: 1.6, rotate: -8 });
-        gsap.set("[data-panda]", { yPercent: 62 });
+        gsap.set("[data-art]", { opacity: 0, y: 36 });
         gsap.set("[data-glyph]", { opacity: 0 });
 
         tl.current = gsap
@@ -32,7 +35,8 @@ export function Hero({ start }: { start: boolean }) {
           .to("[data-sheet]", { clipPath: "inset(0% 0% 0% 0%)", duration: D.unroll, ease: E.settle })
           .to("[data-roller='top']", { y: 0, duration: D.unroll, ease: E.settle }, "<")
           .to("[data-roller='bottom']", { y: 0, duration: D.unroll, ease: E.settle }, "<")
-          .to("[data-hero-line]", { yPercent: 0, duration: D.stroke, stagger: 0.09 }, "-=0.45")
+          .to("[data-art]", { opacity: 1, y: 0, duration: 1.0, ease: E.settle }, "-=0.55")
+          .to("[data-hero-line]", { yPercent: 0, duration: D.stroke, stagger: 0.09 }, "-=0.7")
           .to("[data-glyph]", { opacity: 1, duration: D.stroke }, "<")
           .to(
             "[data-hanko]",
@@ -41,32 +45,14 @@ export function Hero({ start }: { start: boolean }) {
           )
           .to("[data-hanko]", { scale: 1.06, duration: 0.3, ease: E.stampSettle }, ">-0.05")
           .to("[data-hanko]", { scale: 1, duration: 0.25, ease: "power1.out" }, ">")
-          .to("[data-hero-fade]", { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 }, "-=0.5")
-          .to("[data-panda]", { yPercent: 0, duration: 0.8, ease: E.settle }, "-=0.4");
+          .to("[data-hero-fade]", { opacity: 1, y: 0, duration: 0.5, stagger: 0.12 }, "-=0.5");
 
-        // scroll scrub: mist drifts, mountains breathe
-        const st = gsap.timeline({
+        // gentle scroll parallax on the painting
+        gsap.to("[data-art]", {
+          yPercent: 9,
+          ease: "none",
           scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
         });
-        st.to("[data-mist='a']", { yPercent: -14, xPercent: 6 }, 0)
-          .to("[data-mist='b']", { yPercent: -26, xPercent: -8 }, 0)
-          .to("[data-depth='near']", { yPercent: 8 }, 0);
-      });
-
-      // pupils track the cursor (fine pointers; harmless if skipped)
-      mm.add(`${MOTION_OK} and (pointer: fine)`, () => {
-        const pupils = root.current?.querySelectorAll("[data-pupils]");
-        if (!pupils?.length) return;
-        const xs = Array.from(pupils).map((p) => gsap.quickTo(p, "x", { duration: 0.3 }));
-        const ys = Array.from(pupils).map((p) => gsap.quickTo(p, "y", { duration: 0.3 }));
-        const onMove = (e: PointerEvent) => {
-          const nx = (e.clientX / window.innerWidth - 0.5) * 12;
-          const ny = (e.clientY / window.innerHeight - 0.5) * 8;
-          xs.forEach((fn) => fn(nx));
-          ys.forEach((fn) => fn(ny));
-        };
-        window.addEventListener("pointermove", onMove, { passive: true });
-        return () => window.removeEventListener("pointermove", onMove);
       });
     },
     { scope: root },
@@ -83,26 +69,28 @@ export function Hero({ start }: { start: boolean }) {
       aria-labelledby="hero-title"
       className="relative flex min-h-svh flex-col justify-center overflow-hidden bg-washi"
     >
-      {/* the unrolling sheet */}
       <div data-sheet className="absolute inset-0" style={{ clipPath: "inset(0 0 0 0)" }}>
-        {/* landscape, right side */}
+        {/* the painting — between headline layers */}
         <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-[40%] md:inset-y-0 md:left-auto md:right-0 md:h-auto md:w-[58%] max-md:opacity-80"
+          data-art
+          className="absolute bottom-[-4%] right-[-6%] z-20 w-[min(62vw,350px)] md:right-[2%] md:w-[min(42vw,510px)] lg:right-[4%]"
         >
-          <Mountains className="absolute bottom-0 right-0 h-[62%] w-full max-md:h-full" />
-          <div data-mist="a" className="absolute bottom-[34%] right-[6%] w-[70%]">
-            <Kasumi className="w-full opacity-90" />
-          </div>
-          <div data-mist="b" className="absolute bottom-[18%] right-[28%] w-[58%]">
-            <Kasumi flip className="w-full opacity-75" />
-          </div>
+          <ArtPlate
+            name="hero-panda"
+            alt=""
+            eager
+            blend
+            vignette
+            className="aspect-[556/716] w-full"
+          />
         </div>
 
+        {/* petals drift above the painting, below the front line of type */}
+        <PetalField className="absolute inset-0 z-[25]" />
+
         {/* content */}
-        <div className="wrap relative flex min-h-svh flex-col justify-center pb-28 pt-24">
-          <div className="relative max-w-[780px]">
-            {/* 序 glyph column, part of the lockup */}
+        <div className="wrap relative flex min-h-svh flex-col justify-center pb-24 pt-24">
+          <div className="relative max-w-[880px]">
             <div
               data-glyph
               aria-hidden="true"
@@ -118,35 +106,42 @@ export function Hero({ start }: { start: boolean }) {
             </div>
 
             <h1 id="hero-title" className="font-display font-black text-display-1 text-ink">
-              {copy.hero.h1.map((line, i) => (
-                <span key={i} className="block overflow-hidden pb-[0.08em] -mb-[0.08em]">
-                  <span data-hero-line className="block">
-                    {i === copy.hero.h1.length - 1 ? (
-                      <>
-                        {line.split(" ").slice(0, -1).join(" ")}{" "}
-                        <span className="text-vermilion">{line.split(" ").at(-1)}</span>
-                      </>
-                    ) : (
-                      line
-                    )}
+              {copy.hero.h1.map((line, i) => {
+                const front = i === copy.hero.h1.length - 1;
+                return (
+                  <span
+                    key={i}
+                    className={`relative block overflow-hidden pb-[0.08em] -mb-[0.08em] ${
+                      front ? "z-30" : "z-10"
+                    }`}
+                  >
+                    <span data-hero-line className="block">
+                      {front ? (
+                        <>
+                          {line.split(" ").slice(0, -1).join(" ")}{" "}
+                          <span className="text-vermilion">{line.split(" ").at(-1)}</span>
+                        </>
+                      ) : (
+                        line
+                      )}
+                    </span>
                   </span>
-                </span>
-              ))}
+                );
+              })}
             </h1>
 
-            <div
-              data-hanko
-              aria-hidden="true"
-              className="absolute right-0 -top-8 md:-right-6 md:top-auto md:bottom-[30%] xl:-right-10"
-            >
-              <HankoSeal className="h-14 w-14 md:h-[76px] md:w-[76px]" />
+            <div data-hanko aria-hidden="true" className="absolute right-0 -top-8 z-30 md:-right-2 md:top-auto md:bottom-[26%]">
+              <HankoSeal className="h-14 w-14 md:h-[72px] md:w-[72px]" />
             </div>
 
-            <p data-hero-fade className="mt-7 max-w-[46ch] text-[1.125rem] leading-relaxed text-ink-soft">
+            <p
+              data-hero-fade
+              className="relative z-30 mt-7 max-w-[44ch] text-[1.125rem] leading-relaxed text-ink-soft"
+            >
               {copy.hero.sub}
             </p>
 
-            <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-4">
+            <div data-hero-fade className="relative z-30 mt-10 flex flex-wrap items-center gap-4">
               <a href="#pact" className="btn btn-primary">
                 {copy.hero.ctaPrimary}
               </a>
@@ -157,19 +152,9 @@ export function Hero({ start }: { start: boolean }) {
           </div>
         </div>
 
-        {/* panda peeking over the bottom roller */}
-        <div
-          data-panda
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-[1.4rem] right-[8%] w-40 md:right-[16%] md:w-52"
-        >
-          <PandaPeek className="block w-full" />
-        </div>
-
-        {/* scroll hint */}
         <p
           data-hero-fade
-          className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 font-mono text-meta text-ink-mute md:block"
+          className="absolute bottom-10 left-1/2 z-30 hidden -translate-x-1/2 font-mono text-meta text-ink-mute md:block"
         >
           {copy.hero.scrollHint}
         </p>
@@ -179,19 +164,13 @@ export function Hero({ start }: { start: boolean }) {
       <div
         data-roller="top"
         aria-hidden="true"
-        className="absolute left-[-2%] top-0 z-10 h-6 w-[104%] rounded-full bg-gradient-to-b from-ink-raise to-ink shadow-ink-near"
-      >
-        <span className="absolute -left-1 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-gold" />
-        <span className="absolute -right-1 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-gold" />
-      </div>
+        className="absolute left-[-2%] top-0 z-40 h-6 w-[104%] rounded-full bg-gradient-to-b from-ink-raise to-ink shadow-ink-near"
+      />
       <div
         data-roller="bottom"
         aria-hidden="true"
-        className="absolute bottom-0 left-[-2%] z-10 h-6 w-[104%] rounded-full bg-gradient-to-t from-ink-raise to-ink shadow-ink-near"
-      >
-        <span className="absolute -left-1 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-gold" />
-        <span className="absolute -right-1 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-gold" />
-      </div>
+        className="absolute bottom-0 left-[-2%] z-40 h-6 w-[104%] rounded-full bg-gradient-to-t from-ink-raise to-ink shadow-ink-near"
+      />
     </section>
   );
 }

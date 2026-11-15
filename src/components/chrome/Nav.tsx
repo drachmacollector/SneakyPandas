@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { chapters } from "../../config/site";
 import { copy } from "../../data/copy";
 import { HankoSeal } from "../../assets/svg/seals";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -15,7 +23,11 @@ export function Nav() {
         Skip to content
       </a>
 
-      <header className="fixed inset-x-0 top-0 z-[70]">
+      <header
+        className={`fixed inset-x-0 top-0 z-[70] transition-[background-color,border-color,box-shadow] duration-300 ${
+          scrolled ? "border-b border-ink/10 bg-washi" : "border-b border-transparent"
+        }`}
+      >
         <div className="wrap flex items-center justify-between py-4">
           <a
             href="#hero"

@@ -86,34 +86,34 @@ export function PandaSneak({ className }: P) {
 /** Seated, painting a brush stroke (stroke path is separate, [data-brushline]). */
 export function PandaPaint({ className }: P) {
   return (
-    <svg viewBox="0 0 260 210" fill="none" aria-hidden="true" className={className}>
-      {/* seated body */}
+    <svg viewBox="0 0 300 220" fill="none" aria-hidden="true" className={className}>
+      {/* seated body, right side */}
       <path
-        d="M60 196 C48 160 58 124 92 112 C118 102 150 104 170 118 C192 134 198 164 188 188 C184 196 178 200 170 202 L66 202 C62 200 60 198 60 196 Z"
+        d="M168 206 C156 172 164 138 196 126 C222 116 252 120 268 136 C284 152 288 180 278 198 C274 208 268 212 260 214 L176 214 C172 212 168 210 168 206 Z"
         fill={ink}
       />
       {/* belly */}
-      <ellipse cx="124" cy="166" rx="34" ry="28" fill={washi} />
+      <ellipse cx="226" cy="182" rx="30" ry="24" fill={washi} />
       {/* head */}
-      <g transform="translate(118 64) scale(0.78)">
+      <g transform="translate(224 78) scale(0.74)">
         <Head />
       </g>
-      {/* brush arm */}
-      <path d="M168 150 q28 -6 38 -28" stroke={ink} strokeWidth="14" strokeLinecap="round" fill="none" />
-      {/* brush */}
-      <g transform="rotate(32 212 112)">
-        <rect x="208" y="84" width="7" height="34" rx="3" fill={ink} />
-        <path d="M207 118 q4.5 14 9 0 Z" fill={ink} />
+      {/* brush arm reaching left-down toward the paper */}
+      <path d="M186 152 q-26 10 -34 34" stroke={ink} strokeWidth="13" strokeLinecap="round" fill="none" />
+      {/* brush held at the stroke's start */}
+      <g transform="rotate(-38 146 182)">
+        <rect x="142" y="150" width="7" height="32" rx="3" fill={ink} />
+        <path d="M141 182 q4.5 13 9 0 Z" fill={ink} />
       </g>
-      {/* the stroke being painted */}
+      {/* the stroke being painted, flowing left across the paper */}
       <path
         data-brushline
-        d="M208 150 C190 168 150 180 96 178"
+        d="M138 196 C110 206 66 208 18 200"
         stroke={ink}
-        strokeWidth="10"
+        strokeWidth="9"
         strokeLinecap="round"
         fill="none"
-        opacity="0.8"
+        opacity="0.75"
       />
     </svg>
   );

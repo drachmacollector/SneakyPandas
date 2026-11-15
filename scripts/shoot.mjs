@@ -42,6 +42,18 @@ if (skipLoader) {
 }
 
 await page.goto(url, { waitUntil: "networkidle" });
+if (full) {
+  // walk the page so lazy images load and scroll-triggered reveals reach final state
+  await page.evaluate(async () => {
+    const step = window.innerHeight * 0.7;
+    for (let y = 0; y <= document.documentElement.scrollHeight; y += step) {
+      window.scrollTo({ top: y, behavior: "instant" });
+      await new Promise((r) => setTimeout(r, 160));
+    }
+    window.scrollTo({ top: 0, behavior: "instant" });
+  });
+  await page.waitForTimeout(400);
+}
 if (scroll) {
   await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), scroll);
 }

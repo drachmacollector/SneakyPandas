@@ -50,20 +50,22 @@ export function Kasumi({ className, flip = false }: P & { flip?: boolean }) {
 /** Bamboo stalks with leaves. */
 export function Bamboo({ className }: P) {
   return (
-    <svg viewBox="0 0 120 420" fill="none" aria-hidden="true" className={className}>
+    <svg viewBox="0 0 140 420" fill="none" aria-hidden="true" className={className}>
       <g stroke={ink} strokeLinecap="round">
-        {/* stalk 1 */}
-        <path d="M40 420 L40 20" strokeWidth="10" opacity="0.8" />
-        <path d="M31 330 h18 M31 230 h18 M31 130 h18" strokeWidth="5" />
-        {/* stalk 2, thinner, behind */}
-        <path d="M86 420 L86 90" strokeWidth="6" opacity="0.4" />
-        <path d="M80 320 h12 M80 210 h12" strokeWidth="4" opacity="0.4" />
+        {/* main stalk */}
+        <path d="M48 420 L48 28" strokeWidth="9" opacity="0.7" />
+        <path d="M40 330 h16 M40 232 h16 M40 134 h16" strokeWidth="4" opacity="0.7" />
+        {/* thin stalk behind */}
+        <path d="M92 420 L92 110" strokeWidth="5" opacity="0.3" />
+        <path d="M86 322 h12 M86 214 h12" strokeWidth="3" opacity="0.3" />
+        {/* leaf stems off the main stalk */}
+        <path d="M48 60 q22 -10 44 -6 M48 92 q-18 -12 -24 -34 M92 140 q18 -8 36 -4" strokeWidth="3" opacity="0.5" />
       </g>
-      {/* leaves */}
+      {/* leaves hanging from the stems */}
       <g fill={ink}>
-        <path d="M40 60 C60 44 86 40 108 48 C88 62 62 68 40 60 Z" opacity="0.85" />
-        <path d="M40 96 C24 78 20 56 26 36 C42 52 48 76 40 96 Z" opacity="0.6" />
-        <path d="M86 128 C102 114 120 110 136 116 C122 130 102 136 86 128 Z" opacity="0.35" />
+        <path d="M88 52 C104 44 122 44 136 52 C122 62 104 62 88 52 Z" opacity="0.6" />
+        <path d="M26 56 C18 42 16 26 22 12 C32 24 34 42 26 56 Z" opacity="0.45" />
+        <path d="M124 134 C138 128 154 128 166 136 C154 144 138 144 124 134 Z" opacity="0.3" />
       </g>
     </svg>
   );
