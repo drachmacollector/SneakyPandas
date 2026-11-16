@@ -11,8 +11,10 @@ import CircularCarousel from "../vendor/CircularCarousel";
 export function Conquests() {
   const root = useRef<HTMLElement>(null);
   const [open, setOpen] = useState<Project | null>(null);
+  const [active, setActive] = useState(0);
   const openerRef = useRef<HTMLElement | null>(null);
   const c = copy.conquests;
+  const focused = projects[active] ?? projects[0];
 
   const carouselItems = projects.map((p) => ({
     src: p.cover ?? `/work/${p.slug}.jpg`,
@@ -78,13 +80,47 @@ export function Conquests() {
           draggable
           snap
           focusOnClick
-          captions
+          captions={false}
           cornerRadius={5}
           depthFade={0.45}
           fadeColor="#F4EFE3"
+          onChange={setActive}
           onItemClick={(_item, index) => openProject(projects[index])}
           className="h-full w-full"
         />
+      </div>
+
+      {/* the focused scroll, described */}
+      <div key={focused.slug} className="wrap mt-2 flex flex-col items-center text-center [animation:desc-in_0.3s_var(--ease-brush)]">
+        <div className="flex flex-wrap items-baseline justify-center gap-x-4 gap-y-1">
+          <h3 className="font-serif text-[1.35rem] font-bold text-ink">{focused.title}</h3>
+          <span className="font-mono text-meta text-ink-mute tabular-nums">{focused.year}</span>
+          {focused.concept && (
+            <span className="rounded-paper border border-matcha-deep/40 px-2 py-0.5 font-mono text-[0.6875rem] text-matcha-deep">
+              {c.conceptTag}
+            </span>
+          )}
+        </div>
+        <p className="mt-1 font-mono text-[0.75rem] text-ink-mute">
+          {focused.tags.map((t) => `[${t}]`).join("—")}
+        </p>
+        <p className="mt-3 max-w-[56ch] text-[0.9875rem] leading-relaxed text-ink-soft">
+          {focused.outcome}
+        </p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={(e) => openProject(focused, e.currentTarget)}
+            className="btn btn-primary text-[0.9375rem]"
+          >
+            {c.openLabel}
+          </button>
+          {!focused.concept && (
+            <a href={focused.link} target="_blank" rel="noreferrer" className="btn btn-ghost text-ink text-[0.9375rem]">
+              {c.visitLabel} ↗
+            </a>
+          )}
+        </div>
       </div>
 
       {open && <CasePanel project={open} onClose={close} />}
