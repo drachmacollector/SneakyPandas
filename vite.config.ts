@@ -12,9 +12,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          gsap: ['gsap', '@gsap/react', 'lenis'],
-          react: ['react', 'react-dom'],
+        manualChunks(id: string) {
+          if (!id.includes('node_modules')) return
+          if (/[\\/](gsap|@gsap|lenis)[\\/]/.test(id)) return 'gsap'
+          if (/[\\/](react|react-dom|scheduler)[\\/]/.test(id)) return 'react'
         },
       },
     },
