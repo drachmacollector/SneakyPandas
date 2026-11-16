@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 medium-article-japanese-fonts.txt
 sneakypandas-prompt.md
+
+shots/
+public/work/tca-raw.png
