@@ -1,5 +1,7 @@
 # SneakyPandas — The Scroll of the Sneaky Pandas
-**Design & build plan · v1.0 · 2026-11-15**
+**Design & build plan · v1.1 · 2026-11-16**
+
+> **v1.1 addendum (built reality):** mid-build, Nakul supplied `public/inspiration/` and redirected the art direction from hand-authored geometric SVG toward **painterly sumi-e artwork**. The shipped site uses processed crops of the AI-generated inspiration paintings (pipeline: `scripts/prepare-art.mjs` → `public/art/`, multiply-blended into the washi via `ArtPlate`), a canvas petal/gold-fleck field in the hero (`PetalField`, inspired by oneshot-sakura.vercel.app), and iredpanda-style type-over-art layering. The geometric panda poses in `src/assets/svg/panda.tsx` are retired from primary surfaces (kept for spares); seals, strokes and motif glyphs remain. Artist-made pieces in the inspiration folder (the Displate "Tranquility Panda", the Tomoaki Ichikawa painting) were used as **inspiration only** — rights unconfirmed. Everything else below (tokens, copy, IA, motion system, data files) shipped as planned.
 
 This document is self-contained. A builder with only this file and `sneakypandas-prompt.md` can build the entire site: every token, every line of copy, every animation value, and every file path is specified. Nothing here is "add a nice animation" — if a value matters, it is written down.
 

@@ -269,6 +269,23 @@
 
 /* reduced motion: CSS side (JS side handled via gsap.matchMedia) */
 @media (prefers-reduced-motion: reduce) {
+  /* the work scroll stacks vertically — no pin means no horizontal travel */
+  [data-pinwrap] {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  [data-track] {
+    height: auto !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 4rem 1.5rem !important;
+  }
+  [data-track] > * {
+    transform: none !important;
+    width: 100% !important;
+  }
   *,
   *::before,
   *::after {

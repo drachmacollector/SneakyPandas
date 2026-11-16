@@ -9,4 +9,14 @@ export default defineConfig({
   resolve: {
     alias: { '@': path.resolve(import.meta.dirname, './src') },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          gsap: ['gsap', '@gsap/react', 'lenis'],
+          react: ['react', 'react-dom'],
+        },
+      },
+    },
+  },
 })

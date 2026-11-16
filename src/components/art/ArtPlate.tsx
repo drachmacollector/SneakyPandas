@@ -36,6 +36,7 @@ export function ArtPlate({
           src={`/art/${name}.jpg`}
           alt={alt}
           loading={eager ? "eager" : "lazy"}
+          fetchPriority={eager ? "high" : undefined}
           decoding="async"
           draggable={false}
           className={`block h-full w-full object-cover ${blend ? "art-blend" : ""} ${imgClassName}`}

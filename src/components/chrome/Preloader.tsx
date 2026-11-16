@@ -25,7 +25,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     const reduced = window.matchMedia(REDUCED).matches;
-    const total = reduced ? 400 : 1600;
+    const total = reduced ? 400 : 1200;
     const start = performance.now();
 
     const finish = () => {
