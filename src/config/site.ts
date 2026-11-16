@@ -72,19 +72,11 @@ export const photos = {
   way: { src: "/developers/_DSC6706.JPG", position: "60% 20%" },
 } as const;
 
-/** Chapter I facts strip — honest numbers only. */
-export const facts = [
-  { value: "02", label: "founders" },
-  { value: "02", label: "people on your project" },
-  { value: "01+", label: "platforms shipped" },
-  { value: "00", label: "account managers" },
-] as const;
-
 export const chapters = [
   { id: "hero", kanji: "序", title: "Prologue" },
   { id: "clan", kanji: "一", title: "The Clan" },
-  { id: "arts", kanji: "二", title: "The Arts" },
-  { id: "conquests", kanji: "三", title: "The Conquests" },
+  { id: "conquests", kanji: "二", title: "The Conquests" },
+  { id: "arts", kanji: "三", title: "The Arts" },
   { id: "way", kanji: "四", title: "The Way" },
   { id: "masters", kanji: "五", title: "The Masters" },
   { id: "pact", kanji: "終", title: "Seal the Pact" },

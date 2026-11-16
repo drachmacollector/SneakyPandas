@@ -33,7 +33,7 @@ export const copy = {
   },
 
   arts: {
-    kanji: "二",
+    kanji: "三",
     chapter: "The Arts",
     lead: "Four disciplines. One standard: if it ships with our seal on it, it's work we'd sign twice.",
     services: [
@@ -71,7 +71,7 @@ export const copy = {
   marquee: ["Web experiences", "Platforms", "Commerce", "Motion"],
 
   conquests: {
-    kanji: "三",
+    kanji: "二",
     chapter: "The Conquests",
     lead: "Scrolls we've already signed. One is real and live; the rest are concept pieces — shown so you can see how we'd treat yours, and labelled so nobody's fooled.",
     conceptTag: "Concept piece",

@@ -4,6 +4,7 @@ import { copy } from "../../data/copy";
 import { HankoSeal } from "../../assets/svg/seals";
 import { ArtPlate } from "../art/ArtPlate";
 import { PetalField } from "../art/PetalField";
+import { BloomingBranches } from "../art/BloomingBranches";
 
 /**
  * 序 Prologue — the scroll unrolls onto a sumi-e painting.
@@ -70,6 +71,9 @@ export function Hero({ start }: { start: boolean }) {
       className="relative flex min-h-svh flex-col justify-center overflow-hidden bg-washi"
     >
       <div data-sheet className="absolute inset-0" style={{ clipPath: "inset(0 0 0 0)" }}>
+        {/* plum boughs grow in and bloom across the whole sheet */}
+        <BloomingBranches start={start} className="absolute inset-0 z-[6] h-full w-full" />
+
         {/* the painting — between headline layers */}
         <div
           data-art

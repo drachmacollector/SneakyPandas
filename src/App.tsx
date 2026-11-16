@@ -43,8 +43,8 @@ export default function App() {
       <main id="main">
         <Hero start={started} />
         <Clan />
-        <Arts />
         <Conquests />
+        <Arts />
         <Way />
         <Masters />
         <Pact />

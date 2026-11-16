@@ -60,12 +60,12 @@ export function Pact() {
   };
 
   return (
-    <section ref={root} id="pact" aria-labelledby="pact-title" className="bg-ink py-28 text-washi max-md:py-20">
+    <section ref={root} id="pact" aria-labelledby="pact-title" className="bg-ink py-20 text-washi max-md:py-14">
       <div className="wrap">
         <ChapterHead kanji={c.kanji} title={c.chapter} id="pact-title" tone="ink" />
-        <p className="mt-8 max-w-[52ch] text-washi/85">{c.lead}</p>
+        <p className="mt-6 max-w-[52ch] text-washi/85">{c.lead}</p>
 
-        <div className="mt-16 grid items-start gap-14 lg:grid-cols-[minmax(0,560px)_1fr_300px]">
+        <div className="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,560px)_1fr_300px]">
           {/* the contract */}
           <div className="relative rounded-paper bg-washi p-8 pb-24 text-ink shadow-ink md:p-10 md:pb-28">
             <p className="font-display text-[1.2rem] font-bold">The pact, in plain ink:</p>
@@ -139,7 +139,7 @@ export function Pact() {
         </div>
 
         {/* traveler's questions */}
-        <div className="mt-20 grid gap-4 md:grid-cols-2">
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
           {c.faq.map((f) => (
             <details key={f.q} className="group rounded-paper bg-ink-raise p-5 open:pb-6">
               <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 font-display text-[1.05rem] font-bold [&::-webkit-details-marker]:hidden">
