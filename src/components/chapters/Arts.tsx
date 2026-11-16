@@ -56,7 +56,7 @@ export function Arts() {
         <div className="grid items-start gap-16 xl:grid-cols-[1fr_300px]">
           <div>
             <ChapterHead kanji={c.kanji} title={c.chapter} id="arts-title" />
-            <p className="mt-8 max-w-[44ch] font-display text-[clamp(1.25rem,2vw,1.6rem)] font-bold leading-snug">
+            <p className="mt-8 max-w-[44ch] font-serif text-[clamp(1.25rem,2vw,1.6rem)] font-bold leading-snug">
               {c.lead}
             </p>
 

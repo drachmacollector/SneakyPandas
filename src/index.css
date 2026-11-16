@@ -46,6 +46,8 @@
 
 @theme inline {
   --font-display: var(--font-stack-display);
+  --font-serif: var(--font-stack-serif);
+  --font-impact: var(--font-stack-impact);
   --font-brush: var(--font-stack-brush);
   --font-sans: var(--font-stack-body);
   --font-mono: var(--font-stack-mono);
@@ -98,9 +100,12 @@
     border-radius: var(--radius-paper);
   }
   h1,
-  h2,
-  h3 {
+  h2 {
     font-family: var(--font-stack-display);
+    text-wrap: balance;
+  }
+  h3 {
+    font-family: var(--font-stack-serif);
     text-wrap: balance;
   }
   p {

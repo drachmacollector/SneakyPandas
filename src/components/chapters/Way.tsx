@@ -66,7 +66,7 @@ export function Way() {
                     {i + 1}
                   </span>
                   <div>
-                    <h3 className="font-display text-[1.15rem] font-bold">
+                    <h3 className="font-serif text-[1.15rem] font-bold">
                       {s.title}
                       {"kanji" in s && s.kanji ? (
                         <span aria-hidden="true" className="ml-3 font-brush text-[1rem] text-gold">

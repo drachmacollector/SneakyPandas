@@ -47,7 +47,7 @@ export function Clan() {
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_300px] lg:gap-16">
           <div>
             <ChapterHead kanji={c.kanji} title={c.chapter} id="clan-title" />
-            <p data-lead className="mt-8 max-w-[26ch] font-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-bold leading-[1.35]">
+            <p data-lead className="mt-8 max-w-[26ch] font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] font-bold leading-[1.35]">
               {c.lead}
             </p>
             <p className="mt-6 max-w-[62ch] text-ink-soft">{c.body}</p>

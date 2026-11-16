@@ -25,7 +25,7 @@ export function ConceptCover({ project, className = "" }: { project: Project; cl
         <rect width="100%" height="100%" fill="url(#seigaiha)" />
       </svg>
       {/* oversized initial */}
-      <span className="absolute -bottom-7 left-3 select-none font-display text-[7.5rem] font-black leading-none text-ink/12">
+      <span className="absolute -bottom-7 left-3 select-none font-serif text-[7.5rem] font-black leading-none text-ink/12">
         {project.title.charAt(0)}
       </span>
       {/* client mark */}

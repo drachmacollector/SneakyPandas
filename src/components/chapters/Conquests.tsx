@@ -3,10 +3,9 @@ import { copy } from "../../data/copy";
 import { projects, type Project } from "../../data/projects";
 import { ChapterHead } from "./ChapterHead";
 import { ArtPlate } from "../art/ArtPlate";
-import { ConceptCover } from "./ConceptCover";
 import { CasePanel } from "./CasePanel";
 import ImageTrail from "../vendor/ImageTrail";
-import CircularGallery from "../vendor/CircularGallery";
+import CircularCarousel from "../vendor/CircularCarousel";
 
 /** 二 The Conquests — the work, spun on a curved gallery, detailed in cards. */
 export function Conquests() {
@@ -15,9 +14,10 @@ export function Conquests() {
   const openerRef = useRef<HTMLElement | null>(null);
   const c = copy.conquests;
 
-  const galleryItems = projects.map((p) => ({
-    image: p.cover ?? `/work/${p.slug}.jpg`,
-    text: p.title,
+  const carouselItems = projects.map((p) => ({
+    src: p.cover ?? `/work/${p.slug}.jpg`,
+    title: p.title,
+    subtitle: p.tags.map((t) => `[${t}]`).join("—"),
     alt: p.title,
   }));
 
@@ -63,80 +63,28 @@ export function Conquests() {
         />
       </div>
 
-      {/* the spinning shutter of scrolls — drag, wheel or arrow through, click to open */}
-      <div className="mt-6 h-[430px] max-md:h-[330px]">
-        <CircularGallery
-          items={galleryItems}
-          bend={2.6}
-          textColor="#1C1915"
-          font="700 26px 'Zen Old Mincho', Georgia, serif"
-          borderRadius={0.015}
-          itemAspect={1.6}
+      {/* the spinning ring of scrolls — drag it round, click a panel to open */}
+      <div className="mt-6 h-[540px] max-md:h-[440px] [&_h3]:font-serif">
+        <CircularCarousel
+          items={carouselItems}
+          preset="cylinder"
+          intro="rise"
+          cardWidth={760}
+          aspectRatio={1.6}
+          gap={26}
+          autoplay="drift"
+          speed={0.16}
+          pauseOnHover
+          draggable
           snap
-          openOnClick={false}
-          showTitles
+          focusOnClick
+          captions
+          cornerRadius={5}
+          depthFade={0.45}
+          fadeColor="#F4EFE3"
           onItemClick={(_item, index) => openProject(projects[index])}
           className="h-full w-full"
         />
-      </div>
-
-      {/* the ledger — details on paper */}
-      <div className="wrap mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {projects.map((p) => (
-          <button
-            key={p.slug}
-            type="button"
-            onClick={(e) => openProject(p, e.currentTarget)}
-            className="group text-left"
-            aria-label={`${c.openLabel}: ${p.title}`}
-          >
-            <span className="block h-full overflow-hidden rounded-paper border border-ink/12 bg-washi-dim shadow-ink-near transition-transform duration-300 ease-[var(--ease-brush)] group-hover:-translate-y-0.5">
-              <span data-cover={p.slug} className="block aspect-[16/10] overflow-hidden">
-                {p.cover ? (
-                  <picture>
-                    <source srcSet={p.cover.replace(/\.jpg$/, ".webp")} type="image/webp" />
-                    <img
-                      src={p.cover}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full object-cover object-top transition-transform duration-500 ease-[var(--ease-brush)] group-hover:scale-[1.03] grayscale-[0.25] sepia-[0.12]"
-                    />
-                  </picture>
-                ) : (
-                  <span className="block h-full w-full transition-transform duration-500 ease-[var(--ease-brush)] group-hover:scale-[1.03]">
-                    <ConceptCover project={p} />
-                  </span>
-                )}
-              </span>
-              <span className="block border-t border-ink/10 px-5 py-4">
-                <span className="flex items-baseline justify-between gap-4">
-                  <span className="font-display text-[1.1rem] font-bold text-ink">{p.title}</span>
-                  <span className="font-mono text-meta text-ink-mute tabular-nums">{p.year}</span>
-                </span>
-                <span className="mt-1 block font-mono text-[0.72rem] text-ink-mute">
-                  {p.tags.map((t) => `[${t}]`).join("—")}
-                </span>
-                <span className="mt-2 block text-[0.9rem] leading-relaxed text-ink-soft">{p.outcome}</span>
-                {p.concept && (
-                  <span className="mt-2.5 inline-block rounded-paper border border-matcha-deep/40 px-2 py-0.5 font-mono text-[0.6875rem] text-matcha-deep">
-                    {c.conceptTag}
-                  </span>
-                )}
-              </span>
-            </span>
-          </button>
-        ))}
-
-        {/* the blank panel */}
-        <div className="flex flex-col items-start justify-center gap-4 rounded-paper border border-dashed border-ink/25 px-7 py-8">
-          <p className="max-w-[26ch] font-display text-[1.2rem] font-bold leading-snug">
-            The next panel of this scroll is blank. On purpose.
-          </p>
-          <a href="#pact" className="btn btn-ghost text-ink text-[0.9375rem]">
-            Put your name on it
-          </a>
-        </div>
       </div>
 
       {open && <CasePanel project={open} onClose={close} />}

@@ -37,7 +37,7 @@ export function InkMarquee() {
     <span aria-hidden={hidden || undefined} className="flex shrink-0 items-center">
       {items.map((w) => (
         <span key={w} className="flex items-center">
-          <span className="px-6 font-display text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold uppercase tracking-tight text-ink/80">
+          <span className="px-6 font-impact text-[clamp(1.7rem,3.6vw,2.8rem)] uppercase tracking-wide text-ink/80">
             {w}
           </span>
           <span aria-hidden="true" className="font-brush text-[1.2rem] text-vermilion">

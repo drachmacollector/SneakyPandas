@@ -70,7 +70,7 @@ export function CasePanel({ project, onClose }: { project: Project; onClose: () 
 
         <div className="p-7 md:p-10">
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-            <h3 className="font-display text-[1.6rem] font-bold">{project.title}</h3>
+            <h3 className="font-serif text-[1.6rem] font-bold">{project.title}</h3>
             <span className="font-mono text-meta text-ink-mute">{project.year}</span>
             {project.concept && (
               <span className="rounded-paper border border-matcha-deep/40 px-2 py-0.5 font-mono text-[0.6875rem] text-matcha-deep">

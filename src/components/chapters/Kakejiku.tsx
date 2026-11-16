@@ -29,7 +29,7 @@ export function Kakejiku({
       {/* sheet */}
       <div data-sheet className="border-x border-b border-ink/10 bg-washi px-7 pb-8 pt-7 shadow-ink-near">
         <ServiceMotif kind={motif} aria-hidden="true" className="h-11 w-11 text-ink" />
-        <h3 className="mt-5 font-display text-[1.35rem] font-bold leading-tight text-ink">
+        <h3 className="mt-5 font-serif text-[1.35rem] font-bold leading-tight text-ink">
           {title}
           <BrushUnderline className="mt-1 block h-[7px] w-36 text-vermilion [&_path]:[stroke-dasharray:1] [&_path]:[stroke-dashoffset:1] [&_path]:[transition:stroke-dashoffset_0.35s_var(--ease-brush)] group-hover:[&_path]:[stroke-dashoffset:0]" />
         </h3>

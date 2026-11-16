@@ -68,7 +68,7 @@ export function Pact() {
         <div className="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,560px)_1fr_300px]">
           {/* the contract */}
           <div className="relative rounded-paper bg-washi p-8 pb-24 text-ink shadow-ink md:p-10 md:pb-28">
-            <p className="font-display text-[1.2rem] font-bold">The pact, in plain ink:</p>
+            <p className="font-serif text-[1.2rem] font-bold">The pact, in plain ink:</p>
             <ul className="mt-5 space-y-3">
               {c.terms.map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[0.9875rem] text-ink-soft">
@@ -127,7 +127,7 @@ export function Pact() {
                 </span>
               </a>
             </ClickSpark>
-            <p className="max-w-[26ch] text-center font-display text-[1.1rem] font-bold">
+            <p className="max-w-[26ch] text-center font-serif text-[1.1rem] font-bold">
               {c.stampCta}
             </p>
             <p className="text-center font-mono text-meta text-washi/60">
@@ -142,7 +142,7 @@ export function Pact() {
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {c.faq.map((f) => (
             <details key={f.q} className="group rounded-paper bg-ink-raise p-5 open:pb-6">
-              <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 font-display text-[1.05rem] font-bold [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 font-serif text-[1.05rem] font-bold [&::-webkit-details-marker]:hidden">
                 {f.q}
                 <span
                   aria-hidden="true"

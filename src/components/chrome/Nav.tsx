@@ -35,7 +35,7 @@ export function Nav() {
             aria-label="SneakyPandas — back to top"
           >
             <HankoSeal className="h-9 w-9 shrink-0 drop-shadow-sm" />
-            <span className="font-display font-bold text-[1.15rem] tracking-tight">
+            <span className="font-display text-[1.3rem] tracking-tight">
               SneakyPandas
             </span>
           </a>

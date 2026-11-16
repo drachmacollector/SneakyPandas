@@ -39,6 +39,21 @@ export const projects: Project[] = [
     accent: "vermilion",
   },
   {
+    slug: "icarus",
+    title: "Icarus",
+    client: "Side launch · space weather",
+    year: 2026,
+    tags: ["Web App", "Data", "Space"],
+    stack: ["React", "TypeScript"],
+    outcome: "A solar-weather atlas: flares, storms and auroras mapped under one cinematic sky.",
+    description:
+      "Icarus tracks the Sun's temper — “mapping solar fury & auroral beauty across the Earth's skies.” It opens on a full-screen orbital video and organizes solar-activity news, analysis, an event timeline and activity archives into one dark, cinematic reader.",
+    cover: "/work/icarus.jpg",
+    link: "https://icarus-solar.vercel.app/",
+    concept: false,
+    accent: "ink",
+  },
+  {
     slug: "karakuri-coffee",
     title: "Karakuri Coffee",
     client: "Karakuri Coffee Roasters",

@@ -18,7 +18,7 @@ export function PricingBand() {
                 i === 1 ? "md:-mt-4" : ""
               }`}
             >
-              <h4 className="font-display text-[1.2rem] font-bold">{t.name}</h4>
+              <h4 className="font-serif text-[1.2rem] font-bold">{t.name}</h4>
               <p className="mt-2 min-h-[2lh] text-[0.9375rem] leading-relaxed text-washi/70">
                 {t.blurb}
               </p>

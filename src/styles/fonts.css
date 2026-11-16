@@ -27,9 +27,34 @@
 @import "@fontsource/ibm-plex-mono/latin-400.css";
 @import "@fontsource/ibm-plex-mono/latin-500.css";
 
+/* Licensed display faces from iFonts (licenses resolved per Nakul, 2026-11-16) */
+@font-face {
+  font-family: "Fujimoto";
+  src: url("./fujimoto-japanese-font/fujimoto-regular.otf") format("opentype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fujimoto";
+  font-style: italic;
+  src: url("./fujimoto-japanese-font/fujimoto-italic.otf") format("opentype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Baruse";
+  src: url("./baruse-aggressive-extreme-display-typeface/baruse.otf") format("opentype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
 :root {
-  /* Display: chapter titles, H1 */
-  --font-stack-display: "Zen Old Mincho", "Iowan Old Style", Georgia, serif;
+  /* Display: H1, chapter titles, wordmark, tagline (large sizes only) */
+  --font-stack-display: "Fujimoto", "Zen Old Mincho", Georgia, serif;
+  /* Serif: sub-headings, card titles, leads — where Fujimoto gets too busy */
+  --font-stack-serif: "Zen Old Mincho", "Iowan Old Style", Georgia, serif;
+  /* Impact: the marquee and nothing else */
+  --font-stack-impact: "Baruse", "Fujimoto", serif;
   /* Brush: decorative kanji + wordmark flourish ONLY — never body text */
   --font-stack-brush: "Yuji Syuku", "Zen Old Mincho", serif;
   /* Body + UI */

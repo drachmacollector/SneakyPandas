@@ -40,8 +40,8 @@ function MasterPlate({ f, offset }: { f: Founder; offset: boolean }) {
         </div>
       </div>
 
-      <h3 className="mt-6 font-display text-[1.45rem] font-bold">{f.name}</h3>
-      <p className="mt-0.5 font-display text-[1.05rem] font-bold text-vermilion-deep">{f.role}</p>
+      <h3 className="mt-6 font-serif text-[1.45rem] font-bold">{f.name}</h3>
+      <p className="mt-1 font-display text-[1.15rem] italic text-vermilion-deep">{f.role}</p>
       <p className="mt-4 max-w-[44ch] text-[0.9375rem] leading-relaxed text-ink-soft">{f.bio}</p>
       <Magnet magnetStrength={3} padding={60} wrapperClassName="mt-5 inline-block">
         <a
