@@ -12,33 +12,67 @@
             font-display: swap;
           }
      3. Change ONE stack variable at the bottom, e.g.:
-          --font-stack-display: "Shinju Display", "Zen Old Mincho", serif;
+          --font-stack-display: "Shinju Display", "Irazhumi", serif;
    Nothing else in the codebase references font files or family names.
    ============================================================================ */
 
-/* latin-only subsets for the Latin-use faces (keeps the CSS bundle small);
-   Yuji Syuku loads its full subset table because it renders our kanji glyphs */
-@import "@fontsource/zen-old-mincho/latin-700.css";
-@import "@fontsource/zen-old-mincho/latin-900.css";
 @import "@fontsource/yuji-syuku/400.css";
-@import "@fontsource/zen-kaku-gothic-new/latin-400.css";
-@import "@fontsource/zen-kaku-gothic-new/latin-500.css";
-@import "@fontsource/zen-kaku-gothic-new/latin-700.css";
 @import "@fontsource/ibm-plex-mono/latin-400.css";
 @import "@fontsource/ibm-plex-mono/latin-500.css";
 
 /* Licensed display faces from iFonts (licenses resolved per Nakul, 2026-11-16) */
 @font-face {
-  font-family: "Fujimoto";
-  src: url("./fujimoto-japanese-font/fujimoto-regular.otf") format("opentype");
-  font-weight: 400 900;
+  font-family: "Toshira";
+  src: url("./toshira-japanese-brush-display-font/toshira.otf") format("opentype");
+  font-weight: 100 900; /* single-weight face: range stops the browser faking bold */
   font-display: swap;
 }
 @font-face {
-  font-family: "Fujimoto";
-  font-style: italic;
-  src: url("./fujimoto-japanese-font/fujimoto-italic.otf") format("opentype");
-  font-weight: 400 900;
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-extralight.otf") format("opentype");
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-semibold.otf") format("opentype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-extrabold.otf") format("opentype");
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Irazhumi";
+  src: url("./irazhumi-font/irazhumi-black.otf") format("opentype");
+  font-weight: 900;
   font-display: swap;
 }
 @font-face {
@@ -50,15 +84,15 @@
 
 :root {
   /* Display: H1, chapter titles, wordmark, tagline (large sizes only) */
-  --font-stack-display: "Fujimoto", "Zen Old Mincho", Georgia, serif;
-  /* Serif: sub-headings, card titles, leads — where Fujimoto gets too busy */
-  --font-stack-serif: "Zen Old Mincho", "Iowan Old Style", Georgia, serif;
+  --font-stack-display: "Toshira", "Irazhumi", Georgia, serif;
+  /* Serif: sub-headings, card titles, leads — where Toshira gets too busy */
+  --font-stack-serif: "Irazhumi", "Iowan Old Style", Georgia, serif;
   /* Impact: the marquee and nothing else */
-  --font-stack-impact: "Baruse", "Fujimoto", serif;
+  --font-stack-impact: "Baruse", "Toshira", serif;
   /* Brush: decorative kanji + wordmark flourish ONLY — never body text */
-  --font-stack-brush: "Yuji Syuku", "Zen Old Mincho", serif;
+  --font-stack-brush: "Yuji Syuku", "Irazhumi", serif;
   /* Body + UI */
-  --font-stack-body: "Zen Kaku Gothic New", "Hiragino Sans", system-ui, sans-serif;
+  --font-stack-body: "Irazhumi", "Hiragino Sans", system-ui, sans-serif;
   /* Mono: ASCII art, tags, meta */
   --font-stack-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
 }
